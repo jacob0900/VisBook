@@ -1,0 +1,1470 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Análisis de los registros históricos del Banco de la Republica &#8212; EDA Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'EdaVis';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">EDA Book</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Análisis de los registros históricos del Banco de la Republica</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/EdaVis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Análisis de los registros históricos del Banco de la Republica</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Análisis de los registros históricos del Banco de la Republica</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">INTRODUCCION</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-del-probelema">DESCRIPCION DEL PROBELEMA</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metodologia">Metodologia</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-y-diagnostico-eda">1. Preparación y Diagnóstico (EDA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#procesamiento-y-limpieza">Procesamiento y Limpieza:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-correlacion">Análisis de Correlación:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-del-modelo-arima">2. Construcción del Modelo ARIMA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desarrollo-estadistico">Desarrollo Estadístico:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacion-de-redes-neuronales">3. Implementación de Redes Neuronales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-competitiva-y-seleccion">4. Evaluación Competitiva y Selección</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-predicciones-y-despliegue">5. Visualización de Predicciones y Despliegue</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ANALISIS DE CORRELACION</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Construccion del modelo ARIMA</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fin">FIN</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analisis-de-los-registros-historicos-del-banco-de-la-republica">
+<h1>Análisis de los registros históricos del Banco de la Republica<a class="headerlink" href="#analisis-de-los-registros-historicos-del-banco-de-la-republica" title="Permalink to this heading">#</a></h1>
+<section id="introduccion">
+<h2>INTRODUCCION<a class="headerlink" href="#introduccion" title="Permalink to this heading">#</a></h2>
+<p>El análisis de las tasas de colocación y los créditos en Colombia constituye un insumo fundamental para comprender la dinámica del sistema financiero y la transmisión de la política monetaria. El Banco de la República, como autoridad monetaria, recopila y publica series estadísticas históricas que permiten estudiar la evolución de estas variables desde finales del siglo XX (Banco de la República, 2024). Dichas series incluyen información sobre créditos de consumo, tesorería, ordinarios y preferenciales, así como tasas de colocación totales y ajustadas, lo que ofrece una base robusta para el análisis exploratorio y predictivo.</p>
+<p>En el contexto económico colombiano, las tasas de interés de colocación reflejan tanto las decisiones de política monetaria como las condiciones de liquidez y riesgo en el mercado financiero. Diversos estudios han señalado que la variabilidad de estas tasas está asociada con ciclos de expansión y contracción del crédito, afectando directamente la actividad económica y el acceso de los hogares y empresas al financiamiento (Clavijo, 2019; Villar &amp; Salamanca, 2021). Por ello, realizar un análisis exploratorio de datos (EDA) sobre estas series históricas no solo permite identificar patrones de tendencia, estacionalidad y correlación, sino que también constituye el primer paso para la construcción de modelos de predicción.</p>
+<p>El objetivo central de este trabajo es predecir la evolución de la Tesorería de Colocación Total mediante técnicas de series de tiempo, utilizando como insumo las series estadísticas del Banco de la República. Para ello, se plantea una metodología que combina análisis descriptivo, pruebas de estacionariedad y modelado econométrico, con el fin de evaluar la capacidad predictiva y la pertinencia de los modelos aplicados. Este enfoque busca aportar evidencia empírica sobre el comportamiento del crédito en Colombia y contribuir a la comprensión de los mecanismos de transmisión de la política monetaria.</p>
+</section>
+<section id="descripcion-del-probelema">
+<h2>DESCRIPCION DEL PROBELEMA<a class="headerlink" href="#descripcion-del-probelema" title="Permalink to this heading">#</a></h2>
+<p>El presente análisis se centra en un conjunto de datos históricos del Banco de la República, que recoge información mensual desde 1998 sobre distintos tipos de créditos (consumo, tesorería, ordinarios y preferenciales) y las tasas de colocación asociadas (Banco de la República, 2024). La variable Fecha constituye el eje temporal que organiza las observaciones y permite estudiar la evolución de estos indicadores financieros a lo largo de más de dos décadas. Este carácter secuencial convierte al dataset en una serie de tiempo, ideal para explorar tendencias, ciclos y posibles patrones de estacionalidad en el comportamiento del crédito y las tasas de interés en Colombia (Clavijo, 2019; Villar &amp; Salamanca, 2021). Dado que los registros son mensuales, la predicción se realizará también con frecuencia mensual, lo que asegura coherencia entre la naturaleza de los datos y el objetivo del modelado.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="metodologia">
+<h1>Metodologia<a class="headerlink" href="#metodologia" title="Permalink to this heading">#</a></h1>
+<section id="preparacion-y-diagnostico-eda">
+<h2>1. Preparación y Diagnóstico (EDA)<a class="headerlink" href="#preparacion-y-diagnostico-eda" title="Permalink to this heading">#</a></h2>
+<section id="procesamiento-y-limpieza">
+<h3>Procesamiento y Limpieza:<a class="headerlink" href="#procesamiento-y-limpieza" title="Permalink to this heading">#</a></h3>
+<p>Realizarás la extracción, transformación y carga (ETL) de los datos, asegurando el tratamiento de datos atípicos y faltantes para que no afecten el rendimiento de los modelos
+.</p>
+</section>
+<section id="analisis-de-correlacion">
+<h3>Análisis de Correlación:<a class="headerlink" href="#analisis-de-correlacion" title="Permalink to this heading">#</a></h3>
+<p>Aplicaremos coeficientes de Pearson, Spearman o Kendall para identificar la estructura de dependencia entre el tiempo y tu variable objetivo, lo cual es vital para configurar correctamente el ARIMA [4, 6.2].</p>
+</section>
+</section>
+<section id="construccion-del-modelo-arima">
+<h2>2. Construcción del Modelo ARIMA<a class="headerlink" href="#construccion-del-modelo-arima" title="Permalink to this heading">#</a></h2>
+<section id="desarrollo-estadistico">
+<h3>Desarrollo Estadístico:<a class="headerlink" href="#desarrollo-estadistico" title="Permalink to this heading">#</a></h3>
+<p>A diferencia de las redes, aquí aplicaremos la teoría estadística para identificar si la serie requiere diferenciación o transformaciones (logaritmos) para ser estacionaria [2, 7.7, 15].
+Ajuste: Estimarás los parámetros del modelo para capturar los patrones lineales y estacionales históricos de la serie
+.</p>
+</section>
+</section>
+<section id="implementacion-de-redes-neuronales">
+<h2>3. Implementación de Redes Neuronales<a class="headerlink" href="#implementacion-de-redes-neuronales" title="Permalink to this heading">#</a></h2>
+<p>Uso de Librerías: En lugar de construir la arquitectura, utilizaremos funciones y métodos predictivos ya disponibles en librerías especializadas de Python o R
+.
+Enfoque: Nos centraremos en la alimentación de datos y el ajuste de hiperparámetros básicos para que el modelo “caja negra” aprenda las relaciones no lineales de la serie.</p>
+</section>
+<section id="evaluacion-competitiva-y-seleccion">
+<h2>4. Evaluación Competitiva y Selección<a class="headerlink" href="#evaluacion-competitiva-y-seleccion" title="Permalink to this heading">#</a></h2>
+<p>Para decidir qué modelo genera el conocimiento más valioso, compararemos sus resultados bajo los siguientes criterios:
+Métricas de Error: Compararás la bondad de ajuste (como el error cuadrático medio o el AIC) entre el ARIMA y la Red Neuronal
+.
+Análisis de Residuales: Validaremos que los errores del modelo elegido cumplan con los supuestos de normalidad e independencia, asegurando que el modelo haya extraído toda la información posible [2, 7.8].</p>
+</section>
+<section id="visualizacion-de-predicciones-y-despliegue">
+<h2>5. Visualización de Predicciones y Despliegue<a class="headerlink" href="#visualizacion-de-predicciones-y-despliegue" title="Permalink to this heading">#</a></h2>
+<p>Dashboard Interactivo: El modelo ganador se integrará en un Dashboard (Dash o Shiny)
+.
+Interpretación: Utilizarás herramientas como hover, tooltips y zoom para mostrar las proyecciones futuras, permitiendo una interpretación clara para la toma de decisiones estratégicas en escenarios reales
+.</p>
+<p>Importaciones</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">openpyxl</span>
+
+<span class="c1">#importacion del data set</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Users</span><span class="se">\\</span><span class="s2">jacob</span><span class="se">\\</span><span class="s2">OneDrive</span><span class="se">\\</span><span class="s2">Escritorio</span><span class="se">\\</span><span class="s2">Datasets</span><span class="se">\\</span><span class="s2">File.xlsx&quot;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># renombramos columnas</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Fecha&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CreditosConsumo&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CreditosTesoreria&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CreditosOrdinarios&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CreditosPreferenciales&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;TasaColocacionBR&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;TasaColocacionSinTesoreria&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;TasaColocacionTotal&quot;</span>
+<span class="p">]</span>
+
+<span class="c1"># tomamos desde la cuarto fila debido a que las anteriores no nos sirven</span>
+<span class="c1">#df = df.iloc[4:].reset_index(drop=True)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Fecha&#39;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="c1"># Eliminamos las filas vacias</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Fecha</th>
+      <th>CreditosConsumo</th>
+      <th>CreditosTesoreria</th>
+      <th>CreditosOrdinarios</th>
+      <th>CreditosPreferenciales</th>
+      <th>TasaColocacionBR</th>
+      <th>TasaColocacionSinTesoreria</th>
+      <th>TasaColocacionTotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1998-03-31 00:00:00</td>
+      <td>42.241660</td>
+      <td>37.219532</td>
+      <td>36.461227</td>
+      <td>35.195714</td>
+      <td>37.140147</td>
+      <td>37.120547</td>
+      <td>37.175234</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1998-04-30 00:00:00</td>
+      <td>44.080287</td>
+      <td>41.613687</td>
+      <td>38.817179</td>
+      <td>39.644168</td>
+      <td>40.600564</td>
+      <td>40.307819</td>
+      <td>41.079538</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1998-05-31 00:00:00</td>
+      <td>45.316060</td>
+      <td>37.788361</td>
+      <td>40.291468</td>
+      <td>36.325765</td>
+      <td>39.683262</td>
+      <td>40.085468</td>
+      <td>38.902765</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1998-06-30 00:00:00</td>
+      <td>48.410011</td>
+      <td>56.408795</td>
+      <td>47.077058</td>
+      <td>49.560814</td>
+      <td>50.487852</td>
+      <td>48.343274</td>
+      <td>53.539534</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1998-07-31 00:00:00</td>
+      <td>51.567193</td>
+      <td>42.686869</td>
+      <td>48.101190</td>
+      <td>45.519187</td>
+      <td>46.401729</td>
+      <td>47.915642</td>
+      <td>44.408194</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Veamos una descripcion breve de las variables</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Variable&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Fecha&quot;</span><span class="p">,</span> <span class="s2">&quot;CreditosConsumo&quot;</span><span class="p">,</span> <span class="s2">&quot;CreditosTesoreria&quot;</span><span class="p">,</span> <span class="s2">&quot;CreditosOrdinarios&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CreditosPreferenciales&quot;</span><span class="p">,</span> <span class="s2">&quot;TasaColocacionBR&quot;</span><span class="p">,</span> <span class="s2">&quot;TasaColocacionSinTesoreria&quot;</span><span class="p">,</span> <span class="s2">&quot;TasaColocacionTotal&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;Tipo&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Temporal&quot;</span><span class="p">,</span> <span class="s2">&quot;Numérica continua&quot;</span><span class="p">,</span> <span class="s2">&quot;Numérica continua&quot;</span><span class="p">,</span> <span class="s2">&quot;Numérica continua&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Numérica continua&quot;</span><span class="p">,</span> <span class="s2">&quot;Numérica continua&quot;</span><span class="p">,</span> <span class="s2">&quot;Numérica continua&quot;</span><span class="p">,</span> <span class="s2">&quot;Numérica continua&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;Definición&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Fecha de registro mensual de la serie&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Porcentaje de créditos de consumo otorgados&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Porcentaje de créditos de tesorería otorgados&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Porcentaje de créditos ordinarios otorgados&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Porcentaje de créditos preferenciales otorgados&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Tasa de colocación del Banco de la República&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Tasa de colocación sin incluir créditos de tesorería&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Tasa de colocación total del sistema&quot;</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;Escala_de_Medicion&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;Intervalo&quot;</span><span class="p">,</span> <span class="s2">&quot;Razón&quot;</span><span class="p">,</span> <span class="s2">&quot;Razón&quot;</span><span class="p">,</span> <span class="s2">&quot;Razón&quot;</span><span class="p">,</span> <span class="s2">&quot;Razón&quot;</span><span class="p">,</span> <span class="s2">&quot;Razón&quot;</span><span class="p">,</span> <span class="s2">&quot;Razón&quot;</span><span class="p">,</span> <span class="s2">&quot;Razón&quot;</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">df_tabla</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="n">tabla</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">table</span><span class="p">(</span>
+    <span class="n">cellText</span><span class="o">=</span><span class="n">df_tabla</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">colLabels</span><span class="o">=</span><span class="n">df_tabla</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+    <span class="n">cellLoc</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span>
+    <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span>
+<span class="p">)</span>
+
+<span class="n">tabla</span><span class="o">.</span><span class="n">auto_set_font_size</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">tabla</span><span class="o">.</span><span class="n">set_fontsize</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">tabla</span><span class="o">.</span><span class="n">auto_set_column_width</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_tabla</span><span class="o">.</span><span class="n">columns</span><span class="p">))))</span>
+
+<span class="c1"># Estilo encabezado</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_tabla</span><span class="o">.</span><span class="n">columns</span><span class="p">)):</span>
+    <span class="n">tabla</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s2">&quot;#2E4057&quot;</span><span class="p">)</span>
+    <span class="n">tabla</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_text_props</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+
+<span class="c1"># Filas alternas</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_tabla</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;#F5F5F5&quot;</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;white&quot;</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_tabla</span><span class="o">.</span><span class="n">columns</span><span class="p">)):</span>
+        <span class="n">tabla</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Descripción de Variables del Dataset de Tasas de Interés (Colocación)&quot;</span><span class="p">,</span>
+          <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;tabla_variables_EDA.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c04493ba4ba861cac3c604d076f739ff4c4ab128da5505dee8ffc4dc8926bbc1.png" src="_images/c04493ba4ba861cac3c604d076f739ff4c4ab128da5505dee8ffc4dc8926bbc1.png" />
+</div>
+</div>
+<p>Caracteristicas del DataSet</p>
+<p>Estructura</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 330 entries, 0 to 329
+Data columns (total 8 columns):
+ #   Column                      Non-Null Count  Dtype  
+---  ------                      --------------  -----  
+ 0   Fecha                       330 non-null    object 
+ 1   CreditosConsumo             330 non-null    float64
+ 2   CreditosTesoreria           330 non-null    float64
+ 3   CreditosOrdinarios          330 non-null    float64
+ 4   CreditosPreferenciales      330 non-null    float64
+ 5   TasaColocacionBR            330 non-null    float64
+ 6   TasaColocacionSinTesoreria  330 non-null    float64
+ 7   TasaColocacionTotal         330 non-null    float64
+dtypes: float64(7), object(1)
+memory usage: 23.2+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Primeras 5 filas(vista previa)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Fecha</th>
+      <th>CreditosConsumo</th>
+      <th>CreditosTesoreria</th>
+      <th>CreditosOrdinarios</th>
+      <th>CreditosPreferenciales</th>
+      <th>TasaColocacionBR</th>
+      <th>TasaColocacionSinTesoreria</th>
+      <th>TasaColocacionTotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1998-03-31 00:00:00</td>
+      <td>42.241660</td>
+      <td>37.219532</td>
+      <td>36.461227</td>
+      <td>35.195714</td>
+      <td>37.140147</td>
+      <td>37.120547</td>
+      <td>37.175234</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1998-04-30 00:00:00</td>
+      <td>44.080287</td>
+      <td>41.613687</td>
+      <td>38.817179</td>
+      <td>39.644168</td>
+      <td>40.600564</td>
+      <td>40.307819</td>
+      <td>41.079538</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1998-05-31 00:00:00</td>
+      <td>45.316060</td>
+      <td>37.788361</td>
+      <td>40.291468</td>
+      <td>36.325765</td>
+      <td>39.683262</td>
+      <td>40.085468</td>
+      <td>38.902765</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1998-06-30 00:00:00</td>
+      <td>48.410011</td>
+      <td>56.408795</td>
+      <td>47.077058</td>
+      <td>49.560814</td>
+      <td>50.487852</td>
+      <td>48.343274</td>
+      <td>53.539534</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1998-07-31 00:00:00</td>
+      <td>51.567193</td>
+      <td>42.686869</td>
+      <td>48.101190</td>
+      <td>45.519187</td>
+      <td>46.401729</td>
+      <td>47.915642</td>
+      <td>44.408194</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Dimensiones</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(330, 8)
+</pre></div>
+</div>
+</div>
+</div>
+<p>El dataset cuenta con 8 variables todas numericas con 330 observaciones, se asemeja a un panel temporal que registra la evolución de distintos tipos de créditos y tasas de colocación en el sistema financiero lo cual serveria para un analisis. La varibale Fecha es fundamental ya que en ella se fundamentara nuestro analisis como serie temporal</p>
+<p>REVISION DE DATOS FALTANTES</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fecha                         0
+CreditosConsumo               0
+CreditosTesoreria             0
+CreditosOrdinarios            0
+CreditosPreferenciales        0
+TasaColocacionBR              0
+TasaColocacionSinTesoreria    0
+TasaColocacionTotal           0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aca podemos observar que nuestro dataset no presenta ningun tipo de valor faltante lo que nos ayudara a la realizacion de la serie de Tiempo de manera mas efectiva</p>
+<p>ANALISIS UNIVARIADO</p>
+<p>Tasa De colocacion total</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># --- Resumen estadístico ---</span>
+<span class="n">resumen</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Media&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionTotal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Mediana&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionTotal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Desviacion_Estandar&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionTotal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Minimo&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionTotal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Maximo&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionTotal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">resumen_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">resumen</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resumen_df</span><span class="p">)</span>
+
+<span class="c1"># --- Boxplot ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionTotal&quot;</span><span class="p">],</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#AED6F1&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">flierprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;#F1948A&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;TasaColocacionTotal (%)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Distribución De La Tasa De Colocacion Total&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Media    Mediana  Desviacion_Estandar    Minimo     Maximo
+0  14.712434  12.801609             6.661249  8.163828  53.539534
+</pre></div>
+</div>
+<img alt="_images/0a2cb914433ac6b7266d9bccb20f77ecd69845a28bb05d34218e6a25c4db0ffb.png" src="_images/0a2cb914433ac6b7266d9bccb20f77ecd69845a28bb05d34218e6a25c4db0ffb.png" />
+</div>
+</div>
+<p>La variable Tesorería de Colocación Total, que será nuestro objetivo de predicción frente a la variable de tiempo, presenta un promedio de 14.7, lo que refleja que más de la mitad de los valores se ubican por debajo de ese nivel, evidenciando una ligera asimetría positiva, ya que algunos valores altos elevan la media por encima del 50 % de la distribución; la desviación estándar de 6.66 refleja una variabilidad moderada, mientras que el rango entre el mínimo de 8.16 y el máximo de 53.5 muestra tanto periodos de tasas relativamente bajas como episodios de tasas muy elevadas. En el contexto de la serie temporal mensual desde 1998, estos resultados sugieren que la tesorería de colocación total ha tenido un comportamiento con cierta estabilidad en torno a valores medios, pero con picos que responden a coyunturas macroeconómicas específicas, como crisis financieras, ajustes de política monetaria o presiones inflacionarias. Este patrón es fundamental para tu análisis exploratorio, ya que al ser la variable que se busca predecir, la combinación de estadísticas descriptivas y la representación gráfica en el tiempo permitirá identificar tendencias, ciclos y cambios estructurales, preparando el terreno para modelos predictivos que capturen la dinámica y sensibilidad del sistema financiero colombiano frente a variaciones en las condiciones de mercado.</p>
+<p>Creditos De Consumo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># --- Resumen estadístico ---</span>
+<span class="n">resumen</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Media&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosConsumo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Mediana&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosConsumo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Desviacion_Estandar&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosConsumo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Minimo&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosConsumo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Maximo&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosConsumo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">resumen_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">resumen</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resumen_df</span><span class="p">)</span>
+
+<span class="c1"># --- Boxplot ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosConsumo&quot;</span><span class="p">],</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#AED6F1&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">flierprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;#F1948A&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;CreditosConsumo&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Distribución De Los Créditos De Consumo&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Media    Mediana  Desviacion_Estandar     Minimo     Maximo
+0  23.122029  19.950215             7.641846  13.548079  52.310139
+</pre></div>
+</div>
+<img alt="_images/d41eb04e82f8530ef540de9ded1e6743495903ef7bb63c779d67e6125048ed88.png" src="_images/d41eb04e82f8530ef540de9ded1e6743495903ef7bb63c779d67e6125048ed88.png" />
+</div>
+</div>
+<p>La variable Créditos de Consumo presenta un promedio de 23.1, lo que refleja que más de la mitad de los valores se ubican por debajo de ese nivel y evidencia una distribución asimétrica positiva en la que algunos valores altos elevan la media por encima del 50 % de la distribución; la desviación estándar de 7.64 refleja una variabilidad moderada, mientras que el rango entre el mínimo de 13.5 y el máximo de 52.3 confirma episodios de expansión y contracción del crédito a lo largo de más de dos décadas de datos mensuales del Banco de la República. En el contexto de una serie temporal, estas estadísticas sugieren que el crédito de consumo ha estado expuesto a ciclos de auge y restricción influenciados por factores macroeconómicos como tasas de interés, inflación y crisis financieras, lo que convierte su análisis en un punto de partida para identificar tendencias, cambios estructurales y relaciones con otras modalidades de crédito y tasas de colocación, preparando el terreno para modelos predictivos que capturen la dinámica y sensibilidad de este mercado en Colombia.</p>
+<p>Creditos De Tesoreria</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># --- Resumen estadístico ---</span>
+<span class="n">resumen</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Media&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosTesoreria&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Mediana&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosTesoreria&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Desviacion_Estandar&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosTesoreria&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Minimo&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosTesoreria&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Maximo&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosTesoreria&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">resumen_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">resumen</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resumen_df</span><span class="p">)</span>
+
+<span class="c1"># --- Boxplot ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosTesoreria&quot;</span><span class="p">],</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#AED6F1&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">flierprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;#F1948A&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;CreditosTesoreria&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Distribución De Los Créditos De Tesorería&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Media   Mediana  Desviacion_Estandar    Minimo     Maximo
+0  11.573796  9.455916             6.990951  5.559112  56.408795
+</pre></div>
+</div>
+<img alt="_images/c23e031fa6aa297a76e579713911923369d0675cf95ac9a36c10fec013003991.png" src="_images/c23e031fa6aa297a76e579713911923369d0675cf95ac9a36c10fec013003991.png" />
+</div>
+</div>
+<p>La variable Créditos de Tesorería muestra un promedio de 11.6, lo que refleja que más de la mitad de los valores se ubican por debajo de ese nivel y señala nuevamente una distribución con ligera asimetría positiva, pues los valores altos elevan la media por encima del 50 % de la distribución; la desviación estándar de 6.99 refleja una variabilidad moderada, aunque algo menor que la observada en los créditos de consumo, y el rango entre el mínimo de 5.56 y el máximo de 56.4 evidencia episodios de fuerte expansión en ciertos periodos frente a fases de baja colocación. En el contexto de la serie temporal mensual desde 1998, estos resultados sugieren que los créditos de tesorería han tenido un comportamiento más concentrado en valores bajos, pero con picos ocasionales que responden a condiciones macroeconómicas específicas, como necesidades de liquidez de las empresas o ajustes en las tasas de interés. Este patrón, menos estable que el de consumo pero con mayor dispersión relativa en los extremos, constituye un punto de partida para analizar la sensibilidad de esta modalidad frente a shocks financieros y su relación con otras formas de crédito, preparando el terreno para detectar ciclos, cambios estructurales y construir modelos predictivos que capturen su dinámica en el sistema financiero colombiano.</p>
+<p>Creditos Ordinarios</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># --- Resumen estadístico ---</span>
+<span class="n">resumen</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Media&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosOrdinarios&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Mediana&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosOrdinarios&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Desviacion_Estandar&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosOrdinarios&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Minimo&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosOrdinarios&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Maximo&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosOrdinarios&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">resumen_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">resumen</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resumen_df</span><span class="p">)</span>
+
+<span class="c1"># --- Boxplot ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosOrdinarios&quot;</span><span class="p">],</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#AED6F1&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">flierprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;#F1948A&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;CreditosOrdinarios&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Distribución De Los Créditos Ordinarios&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Media    Mediana  Desviacion_Estandar    Minimo     Maximo
+0  15.602229  14.303238              7.16558  6.886727  49.494947
+</pre></div>
+</div>
+<img alt="_images/0935421255508fbab6d3ac8aebb64f56a33ec07d814cfbb8f28c7d78bf5a2779.png" src="_images/0935421255508fbab6d3ac8aebb64f56a33ec07d814cfbb8f28c7d78bf5a2779.png" />
+</div>
+</div>
+<p>La variable Créditos Ordinarios presenta un promedio de 15.6, lo que refleja que más de la mitad de los valores se ubican por debajo de ese nivel y señala una distribución con ligera asimetría positiva, pues algunos valores altos elevan la media por encima del 50 % de la distribución; la desviación estándar de 7.17 refleja una variabilidad moderada, mientras que el rango entre el mínimo de 6.89 y el máximo de 49.5 evidencia tanto periodos de baja colocación como episodios de expansión significativa. En el contexto de la serie temporal mensual desde 1998, estos resultados sugieren que los créditos ordinarios han mostrado un comportamiento relativamente estable en torno a valores medios, pero con picos ocasionales que responden a condiciones macroeconómicas o coyunturales específicas. Este patrón, menos extremo que el de tesorería pero con mayor dispersión que el de consumo, constituye un insumo clave para identificar tendencias, ciclos y posibles cambios estructurales en el sistema financiero colombiano, así como para preparar modelos predictivos que capturen su dinámica y sensibilidad frente a tasas de interés y otros factores económicos.</p>
+<p>Creditos Preferenciales</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># --- Resumen estadístico ---</span>
+<span class="n">resumen</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Media&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosPreferenciales&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Mediana&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosPreferenciales&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Desviacion_Estandar&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosPreferenciales&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Minimo&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosPreferenciales&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Maximo&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosPreferenciales&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">resumen_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">resumen</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resumen_df</span><span class="p">)</span>
+
+<span class="c1"># --- Boxplot ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosPreferenciales&quot;</span><span class="p">],</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#AED6F1&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">flierprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;#F1948A&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;CreditosPreferenciales&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Distribución De Los Créditos Preferenciales&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Media    Mediana  Desviacion_Estandar    Minimo     Maximo
+0  12.046822  10.575737             7.231437  4.335672  49.560814
+</pre></div>
+</div>
+<img alt="_images/5b623e2c5edd638f8df2c2ef521f006250c5cd517479b22f01fd0ea4d2aa2cf6.png" src="_images/5b623e2c5edd638f8df2c2ef521f006250c5cd517479b22f01fd0ea4d2aa2cf6.png" />
+</div>
+</div>
+<p>La variable Créditos Preferenciales presenta un promedio de 12.0, lo que refleja que más de la mitad de los valores se ubican por debajo de ese nivel y evidencia una ligera asimetría positiva, ya que algunos valores altos elevan la media por encima del 50 % de la distribución; la desviación estándar de 7.23 indica una variabilidad moderada, mientras que el rango entre el mínimo de 4.34 y el máximo de 49.6 evidencia tanto periodos de baja colocación como episodios de expansión significativa. En el contexto de la serie temporal mensual desde 1998, estos resultados sugieren que los créditos preferenciales han tenido un comportamiento más concentrado en valores bajos, pero con picos ocasionales que responden a condiciones macroeconómicas específicas o políticas de financiamiento dirigidas a ciertos sectores. Este patrón, con mayor dispersión relativa en los extremos, constituye un insumo clave para identificar tendencias, ciclos y posibles cambios estructurales en el sistema financiero colombiano, así como para preparar modelos predictivos que capturen su dinámica y sensibilidad frente a tasas de interés y otros factores económicos.</p>
+<p>Tasa De Colocacion BR</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># --- Resumen estadístico ---</span>
+<span class="n">resumen</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Media&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionBR&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Mediana&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionBR&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Desviacion_Estandar&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionBR&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Minimo&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionBR&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Maximo&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionBR&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">resumen_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">resumen</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resumen_df</span><span class="p">)</span>
+
+<span class="c1"># --- Boxplot ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionBR&quot;</span><span class="p">],</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#AED6F1&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">flierprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;#F1948A&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;TasaColocacionBR (%)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Distribución De La Tasa De Colocación BR&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Media    Mediana  Desviacion_Estandar    Minimo     Maximo
+0  15.505212  14.281585             6.845193  8.202934  50.487852
+</pre></div>
+</div>
+<img alt="_images/faf4af5f363f53d9ce2b30b6e03b23e742bc0676e8bc25d597ad186e85c7b6e1.png" src="_images/faf4af5f363f53d9ce2b30b6e03b23e742bc0676e8bc25d597ad186e85c7b6e1.png" />
+</div>
+</div>
+<p>La variable Tasa de Colocación del Banco de la República presenta un promedio de 15.5, lo que refleja que más de la mitad de los valores se ubican por debajo de ese nivel y señala una ligera asimetría positiva, pues algunos valores altos elevan la media por encima del 50 % de la distribución; la desviación estándar de 6.85 refleja una variabilidad moderada, mientras que el rango entre el mínimo de 8.20 y el máximo de 50.5 evidencia tanto periodos de tasas relativamente bajas como episodios de tasas muy elevadas. En el contexto de la serie temporal mensual desde 1998, estos resultados sugieren que la tasa de colocación ha tenido un comportamiento con cierta estabilidad en torno a valores medios, pero con picos que responden a coyunturas macroeconómicas específicas, como crisis financieras, ajustes de política monetaria o presiones inflacionarias. Este patrón es fundamental para el análisis exploratorio, ya que permite relacionar la evolución de las tasas con la dinámica de los distintos tipos de crédito, identificar ciclos y cambios estructurales en la política monetaria, y preparar modelos predictivos que capturen la sensibilidad del sistema financiero colombiano frente a variaciones en las condiciones de mercado.</p>
+<p>Tasa De Colocacion Sin Tesoreria</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># --- Resumen estadístico ---</span>
+<span class="n">resumen</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Media&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionSinTesoreria&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Mediana&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionSinTesoreria&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Desviacion_Estandar&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionSinTesoreria&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Minimo&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionSinTesoreria&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s2">&quot;Maximo&quot;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionSinTesoreria&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="n">resumen_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">resumen</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">resumen_df</span><span class="p">)</span>
+
+<span class="c1"># --- Boxplot ---</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionSinTesoreria&quot;</span><span class="p">],</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#AED6F1&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">flierprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;#F1948A&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;TasaColocacionSinTesoreria (%)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Distribución De La Tasa De Colocación Sin Tesorería&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Media    Mediana  Desviacion_Estandar    Minimo     Maximo
+0  15.886567  14.389636             7.027249  8.213002  48.671404
+</pre></div>
+</div>
+<img alt="_images/189ee954ed9152cd769d2b37ab30855099772a8cdb70d2be27082b967acc19dd.png" src="_images/189ee954ed9152cd769d2b37ab30855099772a8cdb70d2be27082b967acc19dd.png" />
+</div>
+</div>
+<p>La variable Tasa de Colocación sin Tesorería presenta un promedio de 15.9, lo que refleja que más de la mitad de los valores se ubican por debajo de ese nivel y evidencia una ligera asimetría positiva, ya que algunos valores altos elevan la media por encima del 50 % de la distribución; la desviación estándar de 7.03 indica una variabilidad moderada, mientras que el rango entre el mínimo de 8.21 y el máximo de 48.7 evidencia tanto periodos de tasas relativamente bajas como episodios de tasas elevadas. En el contexto de la serie temporal mensual desde 1998, estos resultados sugieren que la tasa de colocación sin tesorería ha mostrado un comportamiento relativamente estable en torno a valores medios, pero con picos que responden a coyunturas macroeconómicas específicas, como ajustes de política monetaria, presiones inflacionarias o crisis financieras. Este patrón constituye un insumo clave para el análisis exploratorio, ya que permite relacionar la evolución de las tasas con la dinámica de los distintos tipos de crédito, identificar ciclos y cambios estructurales en la política monetaria, y preparar modelos predictivos que capturen la sensibilidad del sistema financiero colombiano frente a variaciones en las condiciones de mercado.</p>
+<p>ANALISIS BIVARIADO</p>
+<p>Tasa de Colocacion Total VS Tiempo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># --- Gráfico de líneas ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Fecha&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;TasaColocacionTotal&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Evolución de la Tasa de Colocación Total en el tiempo&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tiempo&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;TasaColocacionTotal&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>  <span class="c1"># estilo similar a theme_minimal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/32a6e3b4e531e509c9243ee81d18d204daeb1fb0cf2f18625c8d6d22c6b4d4ad.png" src="_images/32a6e3b4e531e509c9243ee81d18d204daeb1fb0cf2f18625c8d6d22c6b4d4ad.png" />
+</div>
+</div>
+<p>Este diagrama de dispersión muestra la relación entre la Tasa de Colocación Total y los Créditos de Consumo, con una clara tendencia positiva: a mayor volumen de créditos de consumo, mayor tasa de colocación total. Aunque no se ha calculado la correlación estadística, la visualización sugiere una asociación significativa, lo que convierte a los créditos de consumo en un factor relevante para explicar y anticipar el comportamiento de la tasa de colocación total en futuros modelos predictivos.</p>
+<p>Este gráfico de dispersión muestra la evolución de la Tasa de Colocación Total a lo largo del tiempo, donde se distinguen varias fases: a finales de los 90 e inicios de los 2000 se observan niveles muy altos con un pico marcado, seguido de una caída significativa y un periodo de relativa estabilidad en valores más bajos; entre 2010 y 2020 aparecen fluctuaciones con picos intermedios que sugieren ciclos de ajuste en la política monetaria o respuesta a crisis económicas; y alrededor de 2020 se aprecia otro repunte posiblemente asociado a coyunturas como la pandemia. En conjunto, el gráfico evidencia que la tasa no es estacionaria, sino que responde a shocks y tendencias macroeconómicas, lo que confirma la necesidad de un análisis temporal más profundo antes de aplicar modelos predictivos que capturen tanto la tendencia como los ciclos y cambios estructurales del sistema financiero colombiano.</p>
+<p>Tasa de Colocacion Total VS Creditos Tesoreria</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosTesoreria&quot;</span><span class="p">],</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionTotal&quot;</span><span class="p">],</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Relacion entre Tasa de Colocacion Total y Creditos Tesoreria&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;CreditosTesoreria (%)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;TasaColocacionTotal (%)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1dd6a7262c2fb5698dc813979d0b29634f95a2363bcb3e0b7c7149b8d4d77644.png" src="_images/1dd6a7262c2fb5698dc813979d0b29634f95a2363bcb3e0b7c7149b8d4d77644.png" />
+</div>
+</div>
+<p>Este diagrama de dispersión muestra la relación entre la Tasa de Colocación Total y los Créditos de Tesorería; aunque no se ha calculado la correlación numérica, la visualización sugiere una asociación positiva, donde mayores créditos de tesorería se acompañan de incrementos en la tasa de colocación total. Este patrón indica que la tesorería influye directamente en la dinámica de las tasas y constituye un insumo clave para confirmar la relación mediante un cálculo formal de correlación y para futuros modelos predictivos.</p>
+<p>Tasa de Colocacion Total VS Creditos Ordinarios</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosOrdinarios&quot;</span><span class="p">],</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionTotal&quot;</span><span class="p">],</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Relacion entre Tasa de Colocacion Total y Creditos Ordinarios&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;CreditosOrdinarios (%)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;TasaColocacionTotal (%)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/25f3b0ab621015b3f1c85ad49317df577b185d7e234a54367b77f0016b8b5eb6.png" src="_images/25f3b0ab621015b3f1c85ad49317df577b185d7e234a54367b77f0016b8b5eb6.png" />
+</div>
+</div>
+<p>Este diagrama de dispersión muestra la relación entre la Tasa de Colocación Total y los Créditos Ordinarios; aunque no se ha calculado la correlación numérica, la visualización sugiere una asociación positiva, donde mayores créditos ordinarios tienden a acompañarse de incrementos en la tasa de colocación total. Este patrón señala que los créditos ordinarios son un factor relevante en la dinámica de las tasas y constituye un insumo clave para confirmar la relación mediante un cálculo formal de correlación y para futuros modelos predictivos.</p>
+<p>Tasa de Colocacion Total VS Creditos Preferenciales</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosPreferenciales&quot;</span><span class="p">],</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionTotal&quot;</span><span class="p">],</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Relacion entre Tasa de Colocacion Total y Creditos Preferenciales&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;CreditosPreferenciales (%)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;TasaColocacionTotal (%)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a7e57081ce48336b76182d9ba8845c3c3f736feac00195c5116494bf57cc9e46.png" src="_images/a7e57081ce48336b76182d9ba8845c3c3f736feac00195c5116494bf57cc9e46.png" />
+</div>
+</div>
+<p>Este diagrama de dispersión muestra una asociación positiva entre la Tasa de Colocación Total y los Créditos Preferenciales; mayores volúmenes de créditos preferenciales tienden a acompañarse de incrementos en la tasa, lo que señala su influencia en la dinámica financiera y la necesidad de confirmar la relación con un cálculo formal de correlación para futuros modelos predictivos.</p>
+<p>Tasa de Colocacion Total VS Tasa Colocacion BR</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionBR&quot;</span><span class="p">],</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionTotal&quot;</span><span class="p">],</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Relacion entre Tasa de Colocacion Total y Tasa Colocacion BR&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;TasaColocacionBR (%)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;TasaColocacionTotal (%)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b9c30b3d666f386f145f7f4f343282cd27ce3452ab62f88e1ed736382a71da92.png" src="_images/b9c30b3d666f386f145f7f4f343282cd27ce3452ab62f88e1ed736382a71da92.png" />
+</div>
+</div>
+<p>Este diagrama de dispersión muestra la relación entre la Tasa de Colocación Total y la Tasa de Colocación del Banco de la República (BR); aunque aún no se ha calculado la correlación numérica, la visualización sugiere una asociación positiva clara, donde incrementos en la tasa de colocación del BR tienden a acompañarse de incrementos en la tasa de colocación total. Este patrón es consistente con la lógica financiera, ya que las decisiones de política monetaria del Banco de la República influyen directamente en las condiciones de colocación del sistema, y constituye un insumo clave para confirmar la relación mediante un cálculo formal de correlación y para futuros modelos predictivos que busquen capturar la sensibilidad del mercado frente a variaciones en las tasas oficiales.</p>
+<p>Tasa de Colocacion Total VS Tasa Colocacion Sin Tesoreria</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionSinTesoreria&quot;</span><span class="p">],</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionTotal&quot;</span><span class="p">],</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Relacion entre Tasa de Colocacion Total y Tasa Colocacion Sin Tesoreria&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;TasaColocacionSinTesoreria (%)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;TasaColocacionTotal (%)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/af1ae9e546d6f92fa05e428b867522d8089230a9a1dd9bd0f4bb09d6fbc22321.png" src="_images/af1ae9e546d6f92fa05e428b867522d8089230a9a1dd9bd0f4bb09d6fbc22321.png" />
+</div>
+</div>
+<p>Este diagrama muestra una asociación positiva entre la Tasa de Colocación Total y la Tasa de Colocación sin Tesorería; mayores valores en la tasa sin tesorería se acompañan de incrementos en la tasa total, reflejando condiciones financieras comunes y la influencia de factores macroeconómicos, lo que debe confirmarse con un cálculo formal de correlación para fortalecer futuros modelos predictivos.</p>
+<p>Tasa de Colocacion Total VS Créditos de Consumo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;CreditosConsumo&quot;</span><span class="p">],</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;TasaColocacionTotal&quot;</span><span class="p">],</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Relacion entre Tasa de Colocacion Total y Creditos Consumo&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;CreditosConsumo (%)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;TasaColocacionTotal (%)&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b7d48b42f179800a8945880114a44a7b56c8c48617bcab38bbc678ddcd96396d.png" src="_images/b7d48b42f179800a8945880114a44a7b56c8c48617bcab38bbc678ddcd96396d.png" />
+</div>
+</div>
+<p>Este diagrama de dispersión muestra la relación entre la Tasa de Colocación Total y los Créditos de Consumo, con una clara tendencia positiva: a mayor volumen de créditos de consumo, mayor tasa de colocación total. Aunque no se ha calculado la correlación estadística, la visualización sugiere una asociación significativa, lo que convierte a los créditos de consumo en un factor relevante para explicar y anticipar el comportamiento de la tasa de colocación total en futuros modelos predictivos.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>ANALISIS DE CORRELACION<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;Consumo&#39;</span><span class="p">,</span> <span class="s1">&#39;Tesorería&#39;</span><span class="p">,</span> <span class="s1">&#39;Ordinarios&#39;</span><span class="p">,</span> <span class="s1">&#39;Preferenciales&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Tasa BR&#39;</span><span class="p">,</span> <span class="s1">&#39;Tasa s/Tes.&#39;</span><span class="p">,</span> <span class="s1">&#39;Tasa Total&#39;</span>
+<span class="p">]</span>
+
+<span class="n">corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.7991</span><span class="p">,</span> <span class="mf">0.9645</span><span class="p">,</span> <span class="mf">0.8930</span><span class="p">,</span> <span class="mf">0.9118</span><span class="p">,</span> <span class="mf">0.9321</span><span class="p">,</span> <span class="mf">0.8304</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.7991</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.8544</span><span class="p">,</span> <span class="mf">0.9424</span><span class="p">,</span> <span class="mf">0.9344</span><span class="p">,</span> <span class="mf">0.9173</span><span class="p">,</span> <span class="mf">0.9559</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.9645</span><span class="p">,</span> <span class="mf">0.8544</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.9320</span><span class="p">,</span> <span class="mf">0.9496</span><span class="p">,</span> <span class="mf">0.9668</span><span class="p">,</span> <span class="mf">0.8776</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.8930</span><span class="p">,</span> <span class="mf">0.9424</span><span class="p">,</span> <span class="mf">0.9320</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.9745</span><span class="p">,</span> <span class="mf">0.9656</span><span class="p">,</span> <span class="mf">0.9671</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.9118</span><span class="p">,</span> <span class="mf">0.9344</span><span class="p">,</span> <span class="mf">0.9496</span><span class="p">,</span> <span class="mf">0.9745</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.9955</span><span class="p">,</span> <span class="mf">0.9753</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.9321</span><span class="p">,</span> <span class="mf">0.9173</span><span class="p">,</span> <span class="mf">0.9668</span><span class="p">,</span> <span class="mf">0.9656</span><span class="p">,</span> <span class="mf">0.9955</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">,</span> <span class="mf">0.9560</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.8304</span><span class="p">,</span> <span class="mf">0.9559</span><span class="p">,</span> <span class="mf">0.8776</span><span class="p">,</span> <span class="mf">0.9671</span><span class="p">,</span> <span class="mf">0.9753</span><span class="p">,</span> <span class="mf">0.9560</span><span class="p">,</span> <span class="mf">1.0000</span><span class="p">],</span>
+<span class="p">])</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">labelsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">spine</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">corr</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mf">0.55</span> <span class="k">else</span> <span class="s2">&quot;black&quot;</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">corr</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">spine</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">spine</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;correlation_heatmap.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Guardado: correlation_heatmap.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9b7c00b25f66b7465dbfa4bb09002c965ff84780dbdd2ab0d3a1c702978fb9e7.png" src="_images/9b7c00b25f66b7465dbfa4bb09002c965ff84780dbdd2ab0d3a1c702978fb9e7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Guardado: correlation_heatmap.png
+</pre></div>
+</div>
+</div>
+</div>
+<p>En el análisis exploratorio de las series de tiempo del Banco de la República se observa que las variables de créditos y tasas de colocación presentan correlaciones muy altas y positivas, lo que evidencia que todas se mueven de manera conjunta y reflejan una misma tendencia macroeconómica. Este hallazgo es consistente con la naturaleza de indicadores financieros estrechamente vinculados y confirma que las series comparten un mismo ciclo. Para la construcción del modelo ARIMA clásico, estas correlaciones no representan una limitación, ya que el enfoque univariado del modelo permite trabajar con una serie representativa —como la tasa de colocación total— y capturar su dinámica temporal, mientras que las demás variables sirven como contexto y validación dentro del análisis exploratorio.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>Construccion del modelo ARIMA<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
+<p>En la construcción de un modelo ARIMA resulta indispensable verificar la estacionariedad de la serie temporal, dado que este tipo de modelos asume que las propiedades estadísticas —como la media y la varianza— permanecen constantes a lo largo del tiempo. Para ello se emplea la prueba de Dickey-Fuller Aumentada (ADF), la cual permite contrastar la hipótesis de presencia de raíz unitaria en la serie. Si la prueba rechaza la hipótesis nula, se concluye que la serie es estacionaria y puede ser modelada directamente; en caso contrario, se justifica la aplicación de transformaciones como la diferenciación. De esta manera, la prueba ADF constituye un paso metodológico esencial para garantizar la validez del modelo ARIMA y la confiabilidad de las inferencias derivadas de él.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importar librerías necesarias</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">statsmodels.tsa.stattools</span> <span class="kn">import</span> <span class="n">adfuller</span>
+
+
+<span class="n">serie</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;TasaColocacionTotal&#39;</span><span class="p">]</span>
+
+<span class="c1"># Aplicar la prueba ADF</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">adfuller</span><span class="p">(</span><span class="n">serie</span><span class="p">)</span>
+
+<span class="c1"># Mostrar resultados</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estadístico ADF:&quot;</span><span class="p">,</span> <span class="n">resultado</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p-valor:&quot;</span><span class="p">,</span> <span class="n">resultado</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Número de rezagos usados:&quot;</span><span class="p">,</span> <span class="n">resultado</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Número de observaciones:&quot;</span><span class="p">,</span> <span class="n">resultado</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Valores críticos:&quot;</span><span class="p">,</span> <span class="n">resultado</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+
+<span class="c1"># Interpretación</span>
+<span class="k">if</span> <span class="n">resultado</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">0.05</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La serie es estacionaria (rechazamos la hipótesis nula).&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La serie NO es estacionaria (no se rechaza la hipótesis nula).&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estadístico ADF: -2.8653213511112647
+p-valor: 0.04953182363785075
+Número de rezagos usados: 10
+Número de observaciones: 89
+Valores críticos: {&#39;1%&#39;: -3.506057133647011, &#39;5%&#39;: -2.8946066061911946, &#39;10%&#39;: -2.5844100201994697}
+La serie es estacionaria (rechazamos la hipótesis nula).
+</pre></div>
+</div>
+</div>
+</div>
+<p>El resultado de la prueba ADF (Augmented Dickey-Fuller) indicando que tu serie es estacionaria tiene una implicación clave: puedes aplicar directamente un modelo ARIMA clásico sin necesidad de diferenciar la serie. En términos prácticos, esto significa que la media y la varianza de la serie se mantienen constantes a lo largo del tiempo y no existe una tendencia persistente que distorsione el modelo. La estacionariedad es un requisito fundamental para que el ARIMA capture correctamente la dinámica temporal mediante sus componentes autorregresivos y de medias móviles. En conclusión, el hallazgo confirma que tu serie cumple con las condiciones estadísticas necesarias y que el modelo ARIMA podrá ajustarse de manera adecuada para describir y pronosticar su comportamiento.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="fin">
+<h1>FIN<a class="headerlink" href="#fin" title="Permalink to this heading">#</a></h1>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Análisis de los registros históricos del Banco de la Republica</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">INTRODUCCION</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-del-probelema">DESCRIPCION DEL PROBELEMA</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metodologia">Metodologia</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-y-diagnostico-eda">1. Preparación y Diagnóstico (EDA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#procesamiento-y-limpieza">Procesamiento y Limpieza:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-de-correlacion">Análisis de Correlación:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-del-modelo-arima">2. Construcción del Modelo ARIMA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desarrollo-estadistico">Desarrollo Estadístico:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacion-de-redes-neuronales">3. Implementación de Redes Neuronales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-competitiva-y-seleccion">4. Evaluación Competitiva y Selección</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-de-predicciones-y-despliegue">5. Visualización de Predicciones y Despliegue</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">ANALISIS DE CORRELACION</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Construccion del modelo ARIMA</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#fin">FIN</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jacobo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
